@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>KNUST Marketplace app</title>
+<script src="2971368f-652d-4b93-a1bc-6e0535439a0a"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("c3a96638-ebb3-406f-ba68-23ff3b1eb0ff") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("3c3db8ad-ebf4-45b7-9f38-46e3fec14bd9") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("45cf111a-10bf-45ae-811b-cad0c1e67283") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("3dc132f7-5425-4433-af7c-1029a59c9156") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("033a10a5-7095-4f9f-8a63-dbd19401e393") format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* math */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("28284135-9adb-40a4-87d3-fd546eb5934c") format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("ccd7eada-796d-48c1-a20d-279a98034afa") format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("8828234a-44a7-4984-b9a3-418e4c088d34") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("32fd3081-9abf-4cd0-ac59-582c6fc6c0ea") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("8645c0e2-28f7-4326-8d76-114b9df2b74e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("c3a96638-ebb3-406f-ba68-23ff3b1eb0ff") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("3c3db8ad-ebf4-45b7-9f38-46e3fec14bd9") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("45cf111a-10bf-45ae-811b-cad0c1e67283") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("3dc132f7-5425-4433-af7c-1029a59c9156") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("033a10a5-7095-4f9f-8a63-dbd19401e393") format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* math */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("28284135-9adb-40a4-87d3-fd546eb5934c") format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("ccd7eada-796d-48c1-a20d-279a98034afa") format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("8828234a-44a7-4984-b9a3-418e4c088d34") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("32fd3081-9abf-4cd0-ac59-582c6fc6c0ea") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("8645c0e2-28f7-4326-8d76-114b9df2b74e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("c3a96638-ebb3-406f-ba68-23ff3b1eb0ff") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("3c3db8ad-ebf4-45b7-9f38-46e3fec14bd9") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("45cf111a-10bf-45ae-811b-cad0c1e67283") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("3dc132f7-5425-4433-af7c-1029a59c9156") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("033a10a5-7095-4f9f-8a63-dbd19401e393") format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* math */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("28284135-9adb-40a4-87d3-fd546eb5934c") format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("ccd7eada-796d-48c1-a20d-279a98034afa") format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("8828234a-44a7-4984-b9a3-418e4c088d34") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("32fd3081-9abf-4cd0-ac59-582c6fc6c0ea") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("8645c0e2-28f7-4326-8d76-114b9df2b74e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("c3a96638-ebb3-406f-ba68-23ff3b1eb0ff") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("3c3db8ad-ebf4-45b7-9f38-46e3fec14bd9") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("45cf111a-10bf-45ae-811b-cad0c1e67283") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("3dc132f7-5425-4433-af7c-1029a59c9156") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("033a10a5-7095-4f9f-8a63-dbd19401e393") format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* math */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("28284135-9adb-40a4-87d3-fd546eb5934c") format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("ccd7eada-796d-48c1-a20d-279a98034afa") format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("8828234a-44a7-4984-b9a3-418e4c088d34") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("32fd3081-9abf-4cd0-ac59-582c6fc6c0ea") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("8645c0e2-28f7-4326-8d76-114b9df2b74e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+body{margin:0}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.login-photo{background-image:linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.45) 100%),url("279cb900-b203-43a8-a714-6bc2fd751061");background-size:cover;background-position:center 30%;background-color:#2B2B2B}
+button{transition:transform .15s ease,box-shadow .2s ease,background .2s ease}
+button:active{transform:scale(.96)}
+.rise{animation:rise .45s ease both}
+.card{transition:transform .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.18)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="position:relative;width:390px;height:844px;overflow:hidden;background:#FFFFFF;font-family:'Open Sans',sans-serif;color:#1F1F1F"><sc-if value="{{isLogin}}" hint-placeholder-val="{{false}}"><div class="rise" style="position:absolute;left:0;right:0;top:0;bottom:0;overflow-y:auto;{{pad}}"><div class="login-photo" style="height:290px;padding:48px 24px 0;box-sizing:border-box;color:#fff"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:20px;color:#fff">KNUST <span style="color:#C94F0D">Marketplace</span></div><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:30px;line-height:1.15;margin-top:30px;color:#fff">Welcome back</div><div style="font-size:14px;color:#D9D9D9;margin-top:8px;line-height:1.45">Log in to buy and sell safely with verified KNUST students.</div></div>
+<div style="margin:-48px 16px 0;position:relative;background:#fff;border:1px solid #E2E2E2;border-radius:4px;padding:20px 18px 22px"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:18px">Log in</div>
+<sc-if value="{{lBanner}}" hint-placeholder-val="{{false}}"><div role="alert" style="margin-top:14px;background:#FDECEC;border:1px solid #9B1C1C;border-radius:4px;padding:12px;font-size:13px;font-weight:600;color:#9B1C1C">Email or password is not correct. Please try again.</div></sc-if>
+<div style="margin-top:14px"><label for="onEmailf" style="display:block;font-size:13px;font-weight:600;margin-bottom:6px">Student email</label><input id="onEmailf" type="email" placeholder="name@st.knust.edu.gh" value="{{email}}" sc-camel-on-input="{{onEmail}}" style="box-sizing:border-box;width:100%;height:48px;border:{{lEmBd}};border-radius:4px;padding:0 14px;font:400 14px 'Open Sans',sans-serif;background:#fff;color:#1F1F1F"><sc-if value="{{hasLEm}}" hint-placeholder-val="{{false}}"><div style="font-size:12px;font-weight:600;color:#9B1C1C;margin-top:6px">{{lEmErr}}</div></sc-if></div><div style="margin-top:14px"><label for="onPassf" style="display:block;font-size:13px;font-weight:600;margin-bottom:6px">Password</label><input id="onPassf" type="password" placeholder="Your password" value="{{pass}}" sc-camel-on-input="{{onPass}}" style="box-sizing:border-box;width:100%;height:48px;border:{{lPwBd}};border-radius:4px;padding:0 14px;font:400 14px 'Open Sans',sans-serif;background:#fff;color:#1F1F1F"><sc-if value="{{hasLPw}}" hint-placeholder-val="{{false}}"><div style="font-size:12px;font-weight:600;color:#9B1C1C;margin-top:6px">{{lPwErr}}</div></sc-if></div>
+<div style="margin-top:22px"><button sc-camel-on-click="{{doLogin}}" style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:100%;height:52px;border:0;border-radius:4px;background:#C94F0D;color:#fff;box-shadow:0 6px 14px rgba(242,106,33,.45);cursor:pointer;font:700 16px 'Open Sans',sans-serif">Log in</button></div></div>
+<div style="text-align:center;font-size:14px;color:#5F5F5F;margin-top:16px">New to KNUST Marketplace? <button sc-camel-on-click="{{toSignup}}" style="border:0;background:none;color:#2B2B2B;font:600 14px 'Open Sans',sans-serif;cursor:pointer;min-height:44px">Create an account</button></div>
+<div style="margin:0 16px 16px;background:#F2F2F2;border-radius:4px;padding:12px 14px;font-size:12px;line-height:1.5"><b>Prototype demo account</b><br>Email: k.mensah@st.knust.edu.gh<br>Password: Knust@2026</div></div></sc-if><sc-if value="{{isSignup}}" hint-placeholder-val="{{false}}"><div class="rise" style="position:absolute;left:0;right:0;top:0;bottom:0;overflow-y:auto;{{pad}}"><div style="padding:48px 24px 24px"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:20px;color:#2B2B2B">KNUST <span style="color:#1F1F1F">Marketplace</span></div><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:28px;margin-top:28px;line-height:1.15">Create your student account</div><div style="font-size:14px;color:#5F5F5F;margin-top:8px">One account to buy and sell on campus.</div>
+<div style="margin-top:14px"><label for="onSNamef" style="display:block;font-size:13px;font-weight:600;margin-bottom:6px">Full name</label><input id="onSNamef" type="text" placeholder="Your full name" value="{{sName}}" sc-camel-on-input="{{onSName}}" style="box-sizing:border-box;width:100%;height:48px;border:{{sNBd}};border-radius:4px;padding:0 14px;font:400 14px 'Open Sans',sans-serif;background:#fff;color:#1F1F1F"><sc-if value="{{hasSN}}" hint-placeholder-val="{{false}}"><div style="font-size:12px;font-weight:600;color:#9B1C1C;margin-top:6px">{{sNErr}}</div></sc-if></div><div style="margin-top:14px"><label for="onSEmailf" style="display:block;font-size:13px;font-weight:600;margin-bottom:6px">Student email</label><input id="onSEmailf" type="email" placeholder="name@st.knust.edu.gh" value="{{sEmail}}" sc-camel-on-input="{{onSEmail}}" style="box-sizing:border-box;width:100%;height:48px;border:{{sEBd}};border-radius:4px;padding:0 14px;font:400 14px 'Open Sans',sans-serif;background:#fff;color:#1F1F1F"><sc-if value="{{hasSE}}" hint-placeholder-val="{{false}}"><div style="font-size:12px;font-weight:600;color:#9B1C1C;margin-top:6px">{{sEErr}}</div></sc-if></div><div style="margin-top:14px"><label for="onSPassf" style="display:block;font-size:13px;font-weight:600;margin-bottom:6px">Password</label><input id="onSPassf" type="password" placeholder="At least 8 characters" value="{{sPass}}" sc-camel-on-input="{{onSPass}}" style="box-sizing:border-box;width:100%;height:48px;border:{{sPBd}};border-radius:4px;padding:0 14px;font:400 14px 'Open Sans',sans-serif;background:#fff;color:#1F1F1F"><sc-if value="{{hasSP}}" hint-placeholder-val="{{false}}"><div style="font-size:12px;font-weight:600;color:#9B1C1C;margin-top:6px">{{sPErr}}</div></sc-if></div>
+<div style="margin-top:14px;background:#F2F2F2;border-radius:4px;padding:10px 12px;font-size:12px;line-height:1.4">We email a link to verify you are a KNUST student before you can sell.</div>
+<div style="margin-top:22px"><button sc-camel-on-click="{{doSignup}}" style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:100%;height:52px;border:0;border-radius:4px;background:#C94F0D;color:#fff;box-shadow:0 6px 14px rgba(242,106,33,.45);cursor:pointer;font:700 16px 'Open Sans',sans-serif">Sign up</button></div>
+<div style="text-align:center;font-size:14px;color:#5F5F5F;margin-top:12px">Already have an account? <button sc-camel-on-click="{{toLogin}}" style="border:0;background:none;color:#2B2B2B;font:600 14px 'Open Sans',sans-serif;cursor:pointer;min-height:44px">Log in</button></div></div></div></sc-if><sc-if value="{{isHome}}" hint-placeholder-val="{{false}}"><div class="rise" style="position:absolute;left:0;right:0;top:0;bottom:0;overflow-y:auto;{{pad}}"><div style="background:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20390%20260%27%20preserveAspectRatio%3D%27xMidYMax%20slice%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27s%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%231F1F1F%27%2F%3E%3Cstop%20offset%3D%27.6%27%20stop-color%3D%27%234A4A4A%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%238A8A8A%27%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%27g%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23F26A21%27%20stop-opacity%3D%27.85%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23F26A21%27%20stop-opacity%3D%270%27%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%27390%27%20height%3D%27260%27%20fill%3D%27url%28%23s%29%27%2F%3E%3Ccircle%20cx%3D%27310%27%20cy%3D%27170%27%20r%3D%2776%27%20fill%3D%27url%28%23g%29%27%2F%3E%3Ccircle%20cx%3D%27310%27%20cy%3D%27170%27%20r%3D%2728%27%20fill%3D%27%23F26A21%27%2F%3E%3Cpath%20d%3D%27M0%20205%20Q70%20176%20140%20198%20T270%20192%20T390%20184%20V260%20H0Z%27%20fill%3D%27%236B6B6B%27%20opacity%3D%27.8%27%2F%3E%3Cg%20fill%3D%27%231A1A1A%27%3E%3Crect%20x%3D%2730%27%20y%3D%27168%27%20width%3D%27170%27%20height%3D%2762%27%2F%3E%3Crect%20x%3D%2795%27%20y%3D%27132%27%20width%3D%2742%27%20height%3D%2798%27%2F%3E%3Cpath%20d%3D%27M95%20132%20L116%20108%20L137%20132Z%27%2F%3E%3Crect%20x%3D%27150%27%20y%3D%27150%27%20width%3D%2750%27%20height%3D%2780%27%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%27%23F26A21%27%3E%3Crect%20x%3D%2742%27%20y%3D%27180%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%2762%27%20y%3D%27180%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%2742%27%20y%3D%27204%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%2762%27%20y%3D%27204%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27108%27%20y%3D%27146%27%20width%3D%2716%27%20height%3D%2720%27%2F%3E%3Crect%20x%3D%27108%27%20y%3D%27176%27%20width%3D%2716%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27108%27%20y%3D%27200%27%20width%3D%2716%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27160%27%20y%3D%27162%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27178%27%20y%3D%27162%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27160%27%20y%3D%27190%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%27M0%20228%20Q90%20208%20185%20224%20T390%20216%20V260%20H0Z%27%20fill%3D%27%23111%27%2F%3E%3Cg%20fill%3D%27%230A0A0A%27%3E%3Crect%20x%3D%27226%27%20y%3D%27196%27%20width%3D%275%27%20height%3D%2730%27%2F%3E%3Ccircle%20cx%3D%27228%27%20cy%3D%27188%27%20r%3D%2717%27%2F%3E%3Crect%20x%3D%27338%27%20y%3D%27198%27%20width%3D%275%27%20height%3D%2728%27%2F%3E%3Ccircle%20cx%3D%27340%27%20cy%3D%27190%27%20r%3D%2715%27%2F%3E%3Crect%20x%3D%2712%27%20y%3D%27204%27%20width%3D%275%27%20height%3D%2724%27%2F%3E%3Ccircle%20cx%3D%2714%27%20cy%3D%27198%27%20r%3D%2712%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E') center bottom/cover no-repeat,linear-gradient(180deg,#1F1F1F,#8A8A8A);padding:20px 16px 64px;color:#fff"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:20px;color:#fff">KNUST <span style="color:#C94F0D">Marketplace</span></div><button sc-camel-on-click="{{toProfile}}" aria-label="Profile" style="width:44px;height:44px;border-radius:22px;border:0;background:#C94F0D;color:#fff;cursor:pointer;font-family:'Open Sans',sans-serif;font-weight:700;font-size:15px">{{ini}}</button></div>
+<div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#fff;margin-top:14px">HELLO, {{first}}</div><div style="font-weight:800;font-size:26px;line-height:1.15;color:#fff;margin-top:6px">Buy and sell <span style="color:#F26A21">safely</span><br>on campus</div><label style="display:flex;align-items:center;gap:10px;margin-top:8px;background:#fff;border-radius:4px;padding:0 14px;height:48px"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4"></path></svg><input sc-camel-on-input="{{onSearch}}" placeholder="Search textbooks, laptops, room items" style="border:0;outline:0;flex:1;font:400 14px 'Open Sans',sans-serif;color:#1F1F1F;background:transparent"></label></div>
+<div class="rise" style="margin:14px 16px 0;border-radius:4px;padding:14px 16px;background:#2B2B2B;border-left:6px solid #F26A21;color:#fff;display:flex;align-items:center;gap:12px"><div style="animation:float 3s ease-in-out infinite;flex:none;width:46px;height:46px;border-radius:23px;background:rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center"><svg width="26" height="26" sc-camel-view-box="0 0 24 24" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M8.5 12l2.5 2.5L15.5 10"></path></svg></div><div><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:15px">Meet safe, pay in person</div><div style="font-size:12px;line-height:1.35;margin-top:2px">Pick up at Unity, Queens, Independence or the Commercial area.</div></div></div>
+<div style="display:flex;gap:8px;overflow-x:auto;padding:14px 16px 4px"><sc-for list="{{chips}}" as="c" hint-placeholder-count="4"><button sc-camel-on-click="{{c.pick}}" style="flex:none;min-height:44px;padding:0 16px;border-radius:4px;border:1px solid {{c.bd}};background:{{c.bg}};color:{{c.fg}};font:600 13px 'Open Sans',sans-serif">{{c.label}}</button></sc-for></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px 4px"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:18px;border-left:4px solid #F26A21;padding-left:10px">Near your pickup point</div><button sc-camel-on-click="{{pickNext}}" style="min-height:44px;border:1px solid #E2E2E2;background:#fff;border-radius:4px;padding:0 12px;font:600 13px 'Open Sans',sans-serif;color:#1F1F1F;cursor:pointer">{{pickupLabel}} ▾</button></div>
+<div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px;padding:8px 16px 16px"><sc-for list="{{items}}" as="item" hint-placeholder-count="4"><button sc-camel-on-click="{{item.open}}" class="card" style="display:block;width:100%;text-align:left;background:#fff;border:1px solid #E2E2E2;border-radius:4px;padding:8px;cursor:pointer;color:#1F1F1F;box-shadow:0 2px 8px rgba(0,0,0,.07)"><div style="height:110px;border-radius:4px;background:{{item.tint}};display:flex;align-items:center;justify-content:center"><svg width="60" height="60" sc-camel-view-box="0 0 64 64" fill="none" stroke="{{item.ic}}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{item.path}}"></path></svg></div><div style="padding:8px 4px 4px"><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B8460A">{{item.cat}}</div><div style="font-size:13px;font-weight:700;line-height:1.3;margin-top:2px">{{item.name}}</div><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:16px;margin-top:4px">GH₵ {{item.price}}</div><div style="display:flex;align-items:center;gap:6px;margin-top:6px"><span style="background:{{item.cb}};border-radius:2px;padding:2px 8px;font-size:11px;font-weight:600">{{item.cond}}</span><span style="font-size:11px;color:#5F5F5F">{{item.pickup}}</span></div></div></button></sc-for></div>
+<sc-if value="{{noItems}}" hint-placeholder-val="{{false}}"><div style="padding:40px 32px;text-align:center"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:20px">No items found</div><div style="font-size:14px;color:#5F5F5F;margin-top:8px;line-height:1.45">Try another word, a different category, or another pickup point.</div><button sc-camel-on-click="{{clearF}}" style="margin-top:18px;height:48px;padding:0 24px;border:0;border-radius:4px;background:#C94F0D;color:#fff;font:700 15px 'Open Sans',sans-serif;cursor:pointer">Clear filters</button></div></sc-if></div></sc-if><sc-if value="{{isListing}}" hint-placeholder-val="{{false}}"><div class="rise" style="position:absolute;left:0;right:0;top:0;bottom:0;overflow-y:auto;{{pad}}"><div style="display:flex;align-items:center;gap:8px;padding:14px 12px 8px"><button sc-camel-on-click="{{backHome}}" aria-label="Back" style="width:44px;height:44px;border-radius:22px;background:#fff;border:1px solid #E2E2E2;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button><div style="font-weight:600">Listing</div></div><div style="padding:0 16px 24px"><div style="height:200px;border-radius:4px;background:{{cur.tint}};display:flex;align-items:center;justify-content:center"><svg width="100" height="100" sc-camel-view-box="0 0 64 64" fill="none" stroke="{{cur.ic}}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{cur.path}}"></path></svg></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:14px"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:22px;line-height:1.2;max-width:240px">{{cur.name}}</div><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:22px;color:#2B2B2B">GH₵ {{cur.price}}</div></div>
+<div style="display:flex;gap:8px;margin-top:8px"><span style="background:#F2F2F2;border-radius:2px;padding:3px 10px;font-size:12px;font-weight:600">{{cur.cond}}</span><span style="background:#F2F2F2;border-radius:2px;padding:3px 10px;font-size:12px;font-weight:600">{{cur.cat}}</span></div><div style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fff;border:1px solid #E2E2E2;border-radius:4px;padding:12px"><div style="width:44px;height:44px;border-radius:22px;background:#2B2B2B;color:#C94F0D;display:flex;align-items:center;justify-content:center;font-weight:700">{{vInit}}</div><div style="flex:1"><div style="font-weight:600;font-size:14px">{{cur.vendor}}</div><div style="font-size:12px;color:#5F5F5F">Verified student · 4.8 rating</div></div><button sc-camel-on-click="{{viewShop}}" style="border:0;background:none;font:600 13px 'Open Sans',sans-serif;color:#2B2B2B;cursor:pointer;min-height:44px">View shop</button></div>
+<div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:16px;margin-top:16px">Choose a pickup point</div><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px"><sc-for list="{{points}}" as="c" hint-placeholder-count="4"><button sc-camel-on-click="{{c.pick}}" style="flex:none;min-height:44px;padding:0 16px;border-radius:4px;border:1px solid {{c.bd}};background:{{c.bg}};color:{{c.fg}};font:600 13px 'Open Sans',sans-serif">{{c.label}}</button></sc-for></div>
+<div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:16px;margin-top:16px">Preferred time</div><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px"><sc-for list="{{times}}" as="c" hint-placeholder-count="4"><button sc-camel-on-click="{{c.pick}}" style="flex:none;min-height:44px;padding:0 16px;border-radius:4px;border:1px solid {{c.bd}};background:{{c.bg}};color:{{c.fg}};font:600 13px 'Open Sans',sans-serif">{{c.label}}</button></sc-for></div>
+<div style="margin-top:12px;font-size:12px;color:#5F5F5F;line-height:1.4">Pay in person at the meetup. Meet only at campus pickup points.</div><div style="margin-top:16px"><button sc-camel-on-click="{{request}}" style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:100%;height:52px;border:0;border-radius:4px;background:#C94F0D;color:#fff;box-shadow:0 6px 14px rgba(242,106,33,.45);cursor:pointer;font:700 16px 'Open Sans',sans-serif">Request meetup</button></div></div></div></sc-if><sc-if value="{{isOrder}}" hint-placeholder-val="{{false}}"><div class="rise" style="position:absolute;left:0;right:0;top:0;bottom:0;overflow-y:auto;{{pad}}"><div style="padding:20px 16px 8px"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:24px">Your order</div></div>
+<sc-if value="{{noOrder}}" hint-placeholder-val="{{false}}"><div style="padding:40px 32px;text-align:center"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:20px">No orders yet</div><div style="font-size:14px;color:#5F5F5F;margin-top:8px;line-height:1.45">When you request a meetup, you can track it here.</div><button sc-camel-on-click="{{backHome}}" style="margin-top:18px;height:48px;padding:0 24px;border:0;border-radius:4px;background:#C94F0D;color:#fff;font:700 15px 'Open Sans',sans-serif;cursor:pointer">Browse items</button></div></sc-if>
+<sc-if value="{{hasOrder}}" hint-placeholder-val="{{false}}"><div style="margin:8px 16px;background:#fff;border:1px solid #E2E2E2;border-radius:4px;padding:12px;display:flex;gap:12px"><div style="width:72px;flex:none"><div style="height:72px;border-radius:4px;background:{{oi.tint}};display:flex;align-items:center;justify-content:center"><svg width="36" height="36" sc-camel-view-box="0 0 64 64" fill="none" stroke="{{oi.ic}}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{oi.path}}"></path></svg></div></div><div><div style="font-weight:600;font-size:14px">{{oi.name}}</div><div style="font-family:'Open Sans',sans-serif;font-weight:700;margin-top:4px">GH₵ {{oi.price}}</div><div style="font-size:12px;color:#5F5F5F;margin-top:4px">{{orderWhere}}</div></div></div>
+<div style="margin:16px 16px 0;background:#fff;border:1px solid #E2E2E2;border-radius:4px;padding:18px 16px 0"><sc-for list="{{steps}}" as="st" hint-placeholder-count="4"><div style="position:relative;display:flex;gap:14px;padding-bottom:22px"><sc-if value="{{st.line}}" hint-placeholder-val="{{true}}"><div style="position:absolute;left:13px;top:30px;bottom:-14px;width:2px;background:{{st.lc}}"></div></sc-if><div style="flex:none;width:28px;height:28px;border-radius:4px;background:{{st.bg}};border:2px solid {{st.bd}};box-shadow:{{st.sh}};display:flex;align-items:center;justify-content:center"><sc-if value="{{st.done}}" hint-placeholder-val="{{false}}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></sc-if></div><div><div style="font-weight:600;font-size:15px">{{st.t}}</div><div style="font-size:12px;color:#5F5F5F;margin-top:2px">{{st.s}}</div></div></div></sc-for></div>
+<div style="padding:16px"><button sc-camel-on-click="{{advance}}" style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:100%;height:52px;border:0;border-radius:4px;background:#2B2B2B;color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.3);cursor:pointer;font:700 16px 'Open Sans',sans-serif">{{advLabel}}</button><div style="display:flex;gap:10px;margin-top:10px"><button sc-camel-on-click="{{rep}}" style="flex:1;height:48px;border-radius:4px;border:1px solid #E2E2E2;background:#fff;color:#1F1F1F;cursor:pointer;font:600 14px 'Open Sans',sans-serif">{{repLabel}}</button><button sc-camel-on-click="{{blk}}" style="flex:1;height:48px;border-radius:4px;border:1px solid #E2E2E2;background:#fff;color:#1F1F1F;cursor:pointer;font:600 14px 'Open Sans',sans-serif">{{blkLabel}}</button></div></div></sc-if></div></sc-if><sc-if value="{{isReview}}" hint-placeholder-val="{{false}}"><div class="rise" style="position:absolute;left:0;right:0;top:0;bottom:0;overflow-y:auto;{{pad}}"><div style="padding:20px 16px 8px"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:24px">Rate your deal</div><div style="font-size:14px;color:#5F5F5F;margin-top:4px">Your review helps other students buy safely.</div></div>
+<div style="margin:12px 16px;background:#fff;border:1px solid #E2E2E2;border-radius:4px;padding:12px;display:flex;gap:12px"><div style="width:64px;flex:none"><div style="height:64px;border-radius:4px;background:{{oi.tint}};display:flex;align-items:center;justify-content:center"><svg width="32" height="32" sc-camel-view-box="0 0 64 64" fill="none" stroke="{{oi.ic}}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{oi.path}}"></path></svg></div></div><div><div style="font-weight:600;font-size:14px">{{oi.name}}</div><div style="font-size:12px;color:#5F5F5F;margin-top:4px">From {{oi.vendor}} · Completed</div></div></div>
+<div style="padding:8px 16px 24px"><div style="font-size:13px;font-weight:600">Overall rating</div><div style="display:flex;margin-top:4px"><sc-for list="{{stars}}" as="t" hint-placeholder-count="5"><button sc-camel-on-click="{{t.pick}}" aria-label="{{t.label}}" style="border:0;background:none;padding:8px 4px;min-width:44px;min-height:44px;cursor:pointer"><svg width="28" height="28" sc-camel-view-box="0 0 24 24" fill="none" stroke="{{t.c}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l3 6 6 .9-4.5 4.4 1 6.2L12 17.5 6.5 20.5l1-6.2L3 9.9 9 9z"></path></svg></button></sc-for></div>
+<div style="font-size:13px;font-weight:600;margin-top:16px">What went well?</div><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px"><sc-for list="{{tags}}" as="c" hint-placeholder-count="4"><button sc-camel-on-click="{{c.pick}}" style="flex:none;min-height:44px;padding:0 16px;border-radius:4px;border:1px solid {{c.bd}};background:{{c.bg}};color:{{c.fg}};font:600 13px 'Open Sans',sans-serif">{{c.label}}</button></sc-for></div>
+<div style="font-size:13px;font-weight:600;margin-top:16px">Comment (optional)</div><textarea placeholder="Share how the meetup went" style="box-sizing:border-box;width:100%;height:90px;margin-top:8px;border:1px solid #E2E2E2;border-radius:4px;padding:12px;font:400 14px 'Open Sans',sans-serif;background:#fff;color:#1F1F1F"></textarea>
+<div style="margin-top:16px"><button sc-camel-on-click="{{submitReview}}" style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:100%;height:52px;border:0;border-radius:4px;background:#C94F0D;color:#fff;box-shadow:0 6px 14px rgba(242,106,33,.45);cursor:pointer;font:700 16px 'Open Sans',sans-serif">Submit review</button></div></div></div></sc-if><sc-if value="{{isProfile}}" hint-placeholder-val="{{false}}"><div class="rise" style="position:absolute;left:0;right:0;top:0;bottom:0;overflow-y:auto;{{pad}}"><div style="background:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20390%20260%27%20preserveAspectRatio%3D%27xMidYMax%20slice%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27s%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%231F1F1F%27%2F%3E%3Cstop%20offset%3D%27.6%27%20stop-color%3D%27%234A4A4A%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%238A8A8A%27%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%27g%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23F26A21%27%20stop-opacity%3D%27.85%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23F26A21%27%20stop-opacity%3D%270%27%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%27390%27%20height%3D%27260%27%20fill%3D%27url%28%23s%29%27%2F%3E%3Ccircle%20cx%3D%27310%27%20cy%3D%27170%27%20r%3D%2776%27%20fill%3D%27url%28%23g%29%27%2F%3E%3Ccircle%20cx%3D%27310%27%20cy%3D%27170%27%20r%3D%2728%27%20fill%3D%27%23F26A21%27%2F%3E%3Cpath%20d%3D%27M0%20205%20Q70%20176%20140%20198%20T270%20192%20T390%20184%20V260%20H0Z%27%20fill%3D%27%236B6B6B%27%20opacity%3D%27.8%27%2F%3E%3Cg%20fill%3D%27%231A1A1A%27%3E%3Crect%20x%3D%2730%27%20y%3D%27168%27%20width%3D%27170%27%20height%3D%2762%27%2F%3E%3Crect%20x%3D%2795%27%20y%3D%27132%27%20width%3D%2742%27%20height%3D%2798%27%2F%3E%3Cpath%20d%3D%27M95%20132%20L116%20108%20L137%20132Z%27%2F%3E%3Crect%20x%3D%27150%27%20y%3D%27150%27%20width%3D%2750%27%20height%3D%2780%27%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%27%23F26A21%27%3E%3Crect%20x%3D%2742%27%20y%3D%27180%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%2762%27%20y%3D%27180%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%2742%27%20y%3D%27204%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%2762%27%20y%3D%27204%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27108%27%20y%3D%27146%27%20width%3D%2716%27%20height%3D%2720%27%2F%3E%3Crect%20x%3D%27108%27%20y%3D%27176%27%20width%3D%2716%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27108%27%20y%3D%27200%27%20width%3D%2716%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27160%27%20y%3D%27162%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27178%27%20y%3D%27162%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27160%27%20y%3D%27190%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%27M0%20228%20Q90%20208%20185%20224%20T390%20216%20V260%20H0Z%27%20fill%3D%27%23111%27%2F%3E%3Cg%20fill%3D%27%230A0A0A%27%3E%3Crect%20x%3D%27226%27%20y%3D%27196%27%20width%3D%275%27%20height%3D%2730%27%2F%3E%3Ccircle%20cx%3D%27228%27%20cy%3D%27188%27%20r%3D%2717%27%2F%3E%3Crect%20x%3D%27338%27%20y%3D%27198%27%20width%3D%275%27%20height%3D%2728%27%2F%3E%3Ccircle%20cx%3D%27340%27%20cy%3D%27190%27%20r%3D%2715%27%2F%3E%3Crect%20x%3D%2712%27%20y%3D%27204%27%20width%3D%275%27%20height%3D%2724%27%2F%3E%3Ccircle%20cx%3D%2714%27%20cy%3D%27198%27%20r%3D%2712%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E') center bottom/cover no-repeat,linear-gradient(180deg,#1F1F1F,#8A8A8A);padding:36px 16px 28px;color:#fff;text-align:center"><div style="width:84px;height:84px;border-radius:42px;background:#C94F0D;color:#fff;margin:0 auto;display:flex;align-items:center;justify-content:center;font-family:'Open Sans',sans-serif;font-weight:700;font-size:30px">{{ini}}</div><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:24px;margin-top:12px;color:#fff">{{fullName}}</div><div style="font-size:13px;color:#D9D9D9;margin-top:4px">{{email}}</div><div style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:rgba(255,255,255,.14);border-radius:4px;padding:4px 12px;font-size:12px;font-weight:600">Verified KNUST student</div></div>
+<div style="display:flex;gap:10px;padding:16px"><div style="flex:1;background:#fff;border:1px solid #E2E2E2;border-radius:4px;padding:12px;text-align:center"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:20px">4</div><div style="font-size:12px;color:#5F5F5F">Listings</div></div><div style="flex:1;background:#fff;border:1px solid #E2E2E2;border-radius:4px;padding:12px;text-align:center"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:20px">7</div><div style="font-size:12px;color:#5F5F5F">Orders</div></div><div style="flex:1;background:#fff;border:1px solid #E2E2E2;border-radius:4px;padding:12px;text-align:center"><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:20px">4.8</div><div style="font-size:12px;color:#5F5F5F">Rating</div></div></div>
+<div style="margin:0 16px;background:#fff;border:1px solid #E2E2E2;border-radius:4px;overflow:hidden"><button sc-camel-on-click="{{myShop}}" style="display:flex;width:100%;text-align:left;align-items:center;justify-content:space-between;min-height:56px;padding:0 16px;border:0;background:#fff;color:#1F1F1F;cursor:pointer"><div><div style="font-size:15px;font-weight:600">My shop</div><div style="font-size:12px;color:#5F5F5F;margin-top:2px">Manage your listings</div></div><span aria-hidden="true" style="color:#5F5F5F">›</span></button><button sc-camel-on-click="{{toOrders}}" style="display:flex;width:100%;text-align:left;align-items:center;justify-content:space-between;min-height:56px;padding:0 16px;border:0;border-top:1px solid #E2E2E2;background:#fff;color:#1F1F1F;cursor:pointer"><div><div style="font-size:15px;font-weight:600">My orders</div><div style="font-size:12px;color:#5F5F5F;margin-top:2px">Track your meetups</div></div><span aria-hidden="true" style="color:#5F5F5F">›</span></button><button sc-camel-on-click="{{logout}}" style="display:flex;width:100%;text-align:left;align-items:center;justify-content:space-between;min-height:56px;padding:0 16px;border:0;border-top:1px solid #E2E2E2;background:#fff;color:#1F1F1F;cursor:pointer"><div><div style="font-size:15px;font-weight:600">Log out</div><div style="font-size:12px;color:#5F5F5F;margin-top:2px"></div></div><span aria-hidden="true" style="color:#5F5F5F">›</span></button></div></div></sc-if><sc-if value="{{isShop}}" hint-placeholder-val="{{false}}"><div class="rise" style="position:absolute;left:0;right:0;top:0;bottom:0;overflow-y:auto;{{pad}}"><div style="background:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20390%20260%27%20preserveAspectRatio%3D%27xMidYMax%20slice%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27s%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%231F1F1F%27%2F%3E%3Cstop%20offset%3D%27.6%27%20stop-color%3D%27%234A4A4A%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%238A8A8A%27%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%27g%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23F26A21%27%20stop-opacity%3D%27.85%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23F26A21%27%20stop-opacity%3D%270%27%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%27390%27%20height%3D%27260%27%20fill%3D%27url%28%23s%29%27%2F%3E%3Ccircle%20cx%3D%27310%27%20cy%3D%27170%27%20r%3D%2776%27%20fill%3D%27url%28%23g%29%27%2F%3E%3Ccircle%20cx%3D%27310%27%20cy%3D%27170%27%20r%3D%2728%27%20fill%3D%27%23F26A21%27%2F%3E%3Cpath%20d%3D%27M0%20205%20Q70%20176%20140%20198%20T270%20192%20T390%20184%20V260%20H0Z%27%20fill%3D%27%236B6B6B%27%20opacity%3D%27.8%27%2F%3E%3Cg%20fill%3D%27%231A1A1A%27%3E%3Crect%20x%3D%2730%27%20y%3D%27168%27%20width%3D%27170%27%20height%3D%2762%27%2F%3E%3Crect%20x%3D%2795%27%20y%3D%27132%27%20width%3D%2742%27%20height%3D%2798%27%2F%3E%3Cpath%20d%3D%27M95%20132%20L116%20108%20L137%20132Z%27%2F%3E%3Crect%20x%3D%27150%27%20y%3D%27150%27%20width%3D%2750%27%20height%3D%2780%27%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%27%23F26A21%27%3E%3Crect%20x%3D%2742%27%20y%3D%27180%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%2762%27%20y%3D%27180%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%2742%27%20y%3D%27204%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%2762%27%20y%3D%27204%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27108%27%20y%3D%27146%27%20width%3D%2716%27%20height%3D%2720%27%2F%3E%3Crect%20x%3D%27108%27%20y%3D%27176%27%20width%3D%2716%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27108%27%20y%3D%27200%27%20width%3D%2716%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27160%27%20y%3D%27162%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27178%27%20y%3D%27162%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3Crect%20x%3D%27160%27%20y%3D%27190%27%20width%3D%2710%27%20height%3D%2714%27%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%27M0%20228%20Q90%20208%20185%20224%20T390%20216%20V260%20H0Z%27%20fill%3D%27%23111%27%2F%3E%3Cg%20fill%3D%27%230A0A0A%27%3E%3Crect%20x%3D%27226%27%20y%3D%27196%27%20width%3D%275%27%20height%3D%2730%27%2F%3E%3Ccircle%20cx%3D%27228%27%20cy%3D%27188%27%20r%3D%2717%27%2F%3E%3Crect%20x%3D%27338%27%20y%3D%27198%27%20width%3D%275%27%20height%3D%2728%27%2F%3E%3Ccircle%20cx%3D%27340%27%20cy%3D%27190%27%20r%3D%2715%27%2F%3E%3Crect%20x%3D%2712%27%20y%3D%27204%27%20width%3D%275%27%20height%3D%2724%27%2F%3E%3Ccircle%20cx%3D%2714%27%20cy%3D%27198%27%20r%3D%2712%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E') center bottom/cover no-repeat,linear-gradient(180deg,#1F1F1F,#8A8A8A);height:120px;padding:14px 12px;box-sizing:border-box"><button sc-camel-on-click="{{backHome}}" aria-label="Back to home" style="width:44px;height:44px;border-radius:22px;border:0;background:rgba(255,255,255,.14);cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button></div>
+<div style="padding:0 16px 24px;margin-top:-36px"><div style="width:72px;height:72px;border-radius:36px;background:#C94F0D;border:4px solid #FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Open Sans',sans-serif;font-weight:700;font-size:28px">{{shopInit}}</div><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:24px;margin-top:10px">{{shopName}}</div><div style="font-size:13px;color:#5F5F5F;margin-top:4px">Verified student · 4.8 from 32 reviews</div>
+<div style="display:flex;gap:8px;margin-top:12px"><button sc-camel-on-click="{{rep}}" style="flex:1;height:48px;border-radius:4px;border:1px solid #E2E2E2;background:#fff;color:#1F1F1F;cursor:pointer;font:600 14px 'Open Sans',sans-serif;flex:none;padding:0 18px">{{repLabel}}</button></div>
+<div style="display:flex;gap:8px;overflow-x:auto;margin-top:12px"><sc-for list="{{shopChips}}" as="c" hint-placeholder-count="4"><button sc-camel-on-click="{{c.pick}}" style="flex:none;min-height:44px;padding:0 16px;border-radius:4px;border:1px solid {{c.bd}};background:{{c.bg}};color:{{c.fg}};font:600 13px 'Open Sans',sans-serif">{{c.label}}</button></sc-for></div>
+<div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px;margin-top:10px"><sc-for list="{{shopItems}}" as="item" hint-placeholder-count="4"><button sc-camel-on-click="{{item.open}}" class="card" style="display:block;width:100%;text-align:left;background:#fff;border:1px solid #E2E2E2;border-radius:4px;padding:8px;cursor:pointer;color:#1F1F1F;box-shadow:0 2px 8px rgba(0,0,0,.07)"><div style="height:110px;border-radius:4px;background:{{item.tint}};display:flex;align-items:center;justify-content:center"><svg width="60" height="60" sc-camel-view-box="0 0 64 64" fill="none" stroke="{{item.ic}}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{item.path}}"></path></svg></div><div style="padding:8px 4px 4px"><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B8460A">{{item.cat}}</div><div style="font-size:13px;font-weight:700;line-height:1.3;margin-top:2px">{{item.name}}</div><div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:16px;margin-top:4px">GH₵ {{item.price}}</div><div style="display:flex;align-items:center;gap:6px;margin-top:6px"><span style="background:{{item.cb}};border-radius:2px;padding:2px 8px;font-size:11px;font-weight:600">{{item.cond}}</span><span style="font-size:11px;color:#5F5F5F">{{item.pickup}}</span></div></div></button></sc-for></div><sc-if value="{{noShop}}" hint-placeholder-val="{{false}}"><div style="padding:24px;text-align:center;font-size:14px;color:#5F5F5F">No items in this category.</div></sc-if></div></div></sc-if><sc-if value="{{showNav}}" hint-placeholder-val="{{true}}"><nav style="position:absolute;left:0;right:0;bottom:0;height:64px;background:#fff;border-top:1px solid #E2E2E2;display:flex;justify-content:space-around;align-items:center"><sc-for list="{{tabs}}" as="n" hint-placeholder-count="5"><button sc-camel-on-click="{{n.pick}}" style="display:flex;flex-direction:column;align-items:center;gap:2px;min-width:56px;min-height:44px;justify-content:center;border:0;background:{{n.bg}};border-radius:4px;padding:4px 10px;cursor:pointer;font:600 11px 'Open Sans',sans-serif;color:{{n.c}}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="{{n.c}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{n.d}}"></path></svg>{{n.label}}</button></sc-for></nav></sc-if></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844}}">
+class Component extends DCLogic {
+renderVals() {
+const s=Object.assign({screen:'login',email:'',pass:'',tried:false,sName:'',sEmail:'',sPass:'',sTried:false,cat:'All',q:'',pt:0,itemId:0,lpt:1,ltm:0,cur:0,orderId:-1,opt:1,otm:0,rating:4,tags:[0,1],rp:false,bk:false,shopCat:'All',vendor:'',user:null},this.state||{});
+const set=(o)=>this.setState(o);
+const go=(screen,o)=>()=>this.setState(Object.assign({screen},o||{}));
+const chip=(label,on,pick)=>({label,pick,bd:on?'#2B2B2B':'#E2E2E2',bg:on?'#2B2B2B':'#fff',fg:on?'#fff':'#1F1F1F'});
+const K={book:'M14 8h36v48H14zM22 8v48M28 20h16M28 28h16',laptop:'M12 14h40v28H12zM6 50h52l-4-8H10z',lamp:'M20 24l12-14 12 14zM32 24v26M22 54h20',fridge:'M18 6h28v52H18zM18 24h28M24 14v6M24 32v10',papers:'M16 14h30v40H16zM22 8h28v40M22 26h18M22 34h18M22 42h12',board:'M10 14h44v34H10zM16 20h32M20 20v34M10 54h44',bowl:'M8 30h48a24 22 0 01-48 0zM20 22c0-6 6-6 6-12M34 22c0-6 6-6 6-12',shirt:'M22 8l-14 10 6 8 6-4v34h24V22l6 4 6-8L42 8c-2 6-18 6-20 0z',plug:'M24 8v14M40 8v14M18 22h28v10a14 14 0 01-28 0zM32 46v12'};
+const T={book:'#F2F2F2',laptop:'#DDE7F0',lamp:'#FFF3C4',fridge:'#E6EEF2',papers:'#F1E8D4',board:'#E9E2CC',bowl:'#FBE5D3',shirt:'#EADDF0',plug:'#DDE7F0'};
+const CC={All:'#2B2B2B',Textbooks:'#C94F0D',Electronics:'#C94F0D',Hostel:'#C94F0D',Food:'#C94F0D',Thrift:'#C94F0D'};
+const TC={Textbooks:'#F2F2F2',Electronics:'#F2F2F2',Hostel:'#F2F2F2',Food:'#F2F2F2',Thrift:'#F2F2F2'};
+const chipC=(c,on,pick)=>({label:c,pick,bd:on?'#2B2B2B':'#CFCFCF',bg:on?'#2B2B2B':'#fff',fg:on?'#fff':'#1F1F1F'});
+const V={Textbooks:'Conti Books Corner',Electronics:'Katanga Tech Hub'};
+const P=['Independence','Unity','Queens','Commercial area'],TM=['Today, 4:00 PM','Tomorrow, 10:00 AM'],PTS=['All pickup points'].concat(P);
+const raw=[['Engineering Mathematics textbook','85','Used','Unity','Textbooks','book'],['Physics for Engineers textbook','120','Used','Queens','Textbooks','book'],['Past questions bundle (printed)','60','New','Commercial area','Textbooks','papers'],['Drawing board and T-square','200','Used','Independence','Textbooks','board'],['HP EliteBook 830 G6, 8GB, 256GB SSD','4,300','Used','Queens','Electronics','laptop'],['Power bank, 20000mAh','120','Used','Unity','Electronics','plug'],['Study lamp','60','New','Independence','Hostel','lamp'],['Mini fridge','750','Used','Commercial area','Hostel','fridge'],['Extension socket','45','New','Unity','Hostel','plug'],['Banku and tilapia','35','New','Queens','Food','bowl'],['Fried rice and chicken','30','New','Independence','Food','bowl'],['Denim jacket','90','Used','Unity','Thrift','shirt'],['Hall week T-shirt','40','Used','Queens','Thrift','shirt']];
+const ALL=raw.map((a,i)=>({id:i,name:a[0],price:a[1],cond:a[2],pickup:a[3],cat:a[4],vendor:V[a[4]]||'Queens Thrift',path:K[a[5]],tint:TC[a[4]],ic:CC[a[4]],cb:a[2]==='New'?'#FDE3D3':'#EDEDED'}));
+const card=(a)=>Object.assign({},a,{open:go('listing',{itemId:a.id,lpt:P.indexOf(a.pickup),ltm:0})});
+let acct=null;try{acct=JSON.parse(window.localStorage.getItem('knustAcct')||'null');}catch(e){}
+const u=s.user||{name:'Kofi Mensah',email:'k.mensah@st.knust.edu.gh'};
+const parts=u.name.trim().split(/\s+/),first=parts[0],ini=parts.slice(0,2).map(w=>w[0]).join('').toUpperCase();
+const emRx=/^[^\s@]+@st\.knust\.edu\.gh$/;
+const red='2px solid #9B1C1C',okb='1px solid #E2E2E2';
+// login
+const em=s.email.trim().toLowerCase();
+const demo=em==='k.mensah@st.knust.edu.gh'&&s.pass==='Knust@2026';
+const mine=!!acct&&em===acct.email&&s.pass===acct.pass;
+const lValid=demo||mine;
+const lEm=!s.tried?'':em===''?'Email is required':!emRx.test(em)?'Use your KNUST student email (name@st.knust.edu.gh)':'';
+const lPw=!s.tried?'':s.pass===''?'Password is required':'';
+const doLogin=()=>{if(lValid){const nu=mine?{name:acct.name,email:acct.email}:{name:'Kofi Mensah',email:'k.mensah@st.knust.edu.gh'};try{window.localStorage.setItem('knustUser',JSON.stringify(nu));}catch(e){}set({screen:'home',user:nu,tried:false,pass:''});}else{set({tried:true});}};
+// signup
+const sem=s.sEmail.trim().toLowerCase();
+const sValid=s.sName.trim()!==''&&emRx.test(sem)&&s.sPass.length>=8;
+const sN=s.sTried&&s.sName.trim()===''?'Full name is required':'';
+const sE=!s.sTried?'':sem===''?'Email is required':!emRx.test(sem)?'Use your KNUST student email (name@st.knust.edu.gh)':'';
+const sP=!s.sTried?'':s.sPass.length<8?'Password must be at least 8 characters':'';
+const doSignup=()=>{if(sValid){const nu={name:s.sName.trim(),email:sem};try{window.localStorage.setItem('knustAcct',JSON.stringify({name:nu.name,email:sem,pass:s.sPass}));window.localStorage.setItem('knustUser',JSON.stringify(nu));}catch(e){}set({screen:'home',user:nu,sTried:false,sPass:''});}else{set({sTried:true});}};
+// home
+const q=s.q.trim().toLowerCase();
+const items=ALL.filter(a=>(s.cat==='All'||a.cat===s.cat)&&(s.pt===0||a.pickup===PTS[s.pt])&&(!q||(a.name+' '+a.cat).toLowerCase().includes(q))).map(card);
+// listing / order
+const curItem=ALL[s.itemId],oi=ALL[Math.max(s.orderId,0)];
+const hasOrder=s.orderId>=0;
+const STEPS=[['Requested','Sent to vendor'],['Accepted','Vendor agreed to the time'],['Meetup confirmed','Both of you confirm at the pickup point'],['Completed','Pay in person, then leave a review']];
+const steps=STEPS.map((t,i)=>{const done=i<s.cur,now=i===s.cur;return {t:t[0],s:t[1],done,line:i<3,lc:done?'#2B2B2B':'#E2E2E2',bg:done?'#2B2B2B':now?'#C94F0D':'#fff',bd:done?'#2B2B2B':now?'#C94F0D':'#E2E2E2',sh:now?'0 0 0 5px rgba(242,106,33,.35)':'none'};});
+const ADV=['','Vendor accepts (demo)','Confirm meetup','Mark as completed','Leave a review'];
+// shop
+const shopName=s.vendor==='My shop'?first+"'s shop":s.vendor;
+const shopSrc=ALL.filter(a=>s.vendor==='My shop'?a.vendor==='Conti Books Corner':a.vendor===s.vendor);
+const shopItems=shopSrc.filter(a=>s.shopCat==='All'||a.cat===s.shopCat).map(card);
+const cats=['All','Textbooks','Electronics','Hostel','Food','Thrift'];
+const act={home:'Home',shop:'Sell',order:'Orders',profile:'Profile'}[s.screen];
+const TABS=[['Home','M3 11l9-8 9 8v10H3z',go('home')],['Search','M21 21l-4-4M18 11a7 7 0 11-14 0 7 7 0 0114 0z',go('home')],['Sell','M12 5v14M5 12h14',go('shop',{vendor:'My shop',shopCat:'All'})],['Orders','M6 2h12v20l-3-2-3 2-3-2-3 2z',go('order')],['Profile','M12 12a4 4 0 100-8 4 4 0 000 8zM4 21c0-4 4-6 8-6s8 2 8 6',go('profile')]];
+return {
+isLogin:s.screen==='login',isSignup:s.screen==='signup',isHome:s.screen==='home',isListing:s.screen==='listing',isOrder:s.screen==='order',isReview:s.screen==='review',isProfile:s.screen==='profile',isShop:s.screen==='shop',
+pad:['home','shop','order','profile','listing'].includes(s.screen)?'bottom:64px;':'',
+showNav:['home','shop','order','profile','listing'].includes(s.screen),
+tabs:TABS.map(t=>({label:t[0],d:t[1],pick:t[2],c:t[0]===act?'#2B2B2B':'#5F5F5F',bg:t[0]===act?'#F2F2F2':'transparent'})),
+email:s.screen==='profile'?u.email:s.email,pass:s.pass,lBanner:s.tried&&!lValid,lEmErr:lEm,hasLEm:lEm!=='',lPwErr:lPw,hasLPw:lPw!=='',lEmBd:lEm?red:okb,lPwBd:lPw?red:okb,
+onEmail:(e)=>set({email:e.target.value}),onPass:(e)=>set({pass:e.target.value}),doLogin,toSignup:go('signup'),toLogin:go('login'),
+sName:s.sName,sEmail:s.sEmail,sPass:s.sPass,sNErr:sN,sEErr:sE,sPErr:sP,hasSN:sN!=='',hasSE:sE!=='',hasSP:sP!=='',sNBd:sN?red:okb,sEBd:sE?red:okb,sPBd:sP?red:okb,
+onSName:(e)=>set({sName:e.target.value}),onSEmail:(e)=>set({sEmail:e.target.value}),onSPass:(e)=>set({sPass:e.target.value}),doSignup,
+first,ini,fullName:u.name,items,noItems:items.length===0,pickupLabel:PTS[s.pt],
+chips:cats.map(c=>chipC(c,s.cat===c,()=>set({cat:c}))),onSearch:(e)=>set({q:e.target.value}),pickNext:()=>set({pt:(s.pt+1)%PTS.length}),clearF:()=>set({cat:'All',q:'',pt:0}),
+toProfile:go('profile'),backHome:go('home'),
+cur:curItem,vInit:curItem.vendor[0],viewShop:go('shop',{vendor:curItem.vendor,shopCat:'All'}),
+points:P.map((p,i)=>chip(p,s.lpt===i,()=>set({lpt:i}))),times:TM.map((p,i)=>chip(p,s.ltm===i,()=>set({ltm:i}))),
+request:()=>set({orderId:s.itemId,opt:s.lpt,otm:s.ltm,cur:1,rp:false,bk:false,screen:'order'}),
+hasOrder,noOrder:!hasOrder,oi,orderWhere:P[s.opt]+' pickup · '+TM[s.otm],steps,advLabel:ADV[Math.min(s.cur,4)],
+advance:()=>{if(s.cur>=4){set({screen:'review'});}else{set({cur:s.cur+1});}},
+rep:()=>set({rp:!s.rp}),blk:()=>set({bk:!s.bk}),repLabel:s.rp?'Reported':'Report',blkLabel:s.bk?'Vendor blocked':'Block vendor',
+stars:[1,2,3,4,5].map(n=>({label:n+' star'+(n>1?'s':''),c:n<=s.rating?'#F26A21':'#CFC7B0',pick:()=>set({rating:n})})),
+tags:['Item as described','On time','Friendly','Fair price'].map((t,i)=>chip(t,s.tags.includes(i),()=>set({tags:s.tags.includes(i)?s.tags.filter(x=>x!==i):s.tags.concat(i)}))),
+submitReview:()=>set({screen:'home',orderId:-1,cur:0,rating:4,tags:[0,1]}),
+myShop:go('shop',{vendor:'My shop',shopCat:'All'}),toOrders:go('order'),logout:go('login',{user:null,email:'',pass:'',tried:false}),
+shopName,shopInit:shopName[0],shopItems,noShop:shopItems.length===0,shopChips:cats.map(c=>chipC(c,s.shopCat===c,()=>set({shopCat:c})))};
+}
+}
+</script>
+
+
+</body></html>
